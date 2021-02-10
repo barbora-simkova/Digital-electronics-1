@@ -4,6 +4,8 @@
 
 **Toto je tučný text**
 
+*Tento text je italicou*
+
 ```vhdl
 git status
 git add
