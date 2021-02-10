@@ -14,6 +14,8 @@
 2. James Monroe
 3. John Quincy Adams
 
+[I'm an inline-style link](https://www.google.com)
+
 ```vhdl
 git status
 git add
