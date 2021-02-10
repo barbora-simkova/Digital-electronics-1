@@ -6,6 +6,10 @@
 
 *Tento text je italicou*
 
+- George Washington
+- John Adams
+- Thomas Jefferson
+
 ```vhdl
 git status
 git add
