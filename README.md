@@ -2,6 +2,8 @@
 
 ## Nadpis druhé úrovně
 
+**Toto je tučný text**
+
 ```vhdl
 git status
 git add
