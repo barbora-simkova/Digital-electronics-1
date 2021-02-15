@@ -62,4 +62,6 @@ end architecture dataflow;
 
 ## 3. Verification of Distributive laws.
 
+![graf2](Images/graf2.png)
+
 [Link to my public EDA Playground example](https://www.edaplayground.com/x/B3N7)
