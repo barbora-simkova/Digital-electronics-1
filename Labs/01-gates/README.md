@@ -1,4 +1,4 @@
-# 01- Gates
+# 01 - Gates
 ## Verification of De Morgan's laws of function.
 
 ```vhdl 
