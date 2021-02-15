@@ -12,4 +12,4 @@ end architecture dataflow;
 ```
 
 
-[Link to my public EDA Playground example](https://www.edaplayground.com/x/MQcs)
+[Link to my public EDA Playground example](https://www.edaplayground.com/x/Z594)
