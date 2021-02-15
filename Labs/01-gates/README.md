@@ -61,3 +61,5 @@ end architecture dataflow;
 [Link to my public EDA Playground example](https://www.edaplayground.com/x/Z594)
 
 ## 3. Verification of Distributive laws.
+
+[Link to my public EDA Playground example](https://www.edaplayground.com/x/B3N7)
