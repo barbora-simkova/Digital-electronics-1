@@ -1,5 +1,5 @@
 # 01- Gates
-## Verification of De Morgan's laws of function f(c,b,a).
+## Verification of De Morgan's laws of function.
 
 ```vhdl 
 architecture dataflow of gates is
@@ -10,6 +10,8 @@ begin
 
 end architecture dataflow;
 ```
+
+![graf](Images/graf.png)
 
 
 [Link to my public EDA Playground example](https://www.edaplayground.com/x/Z594)
