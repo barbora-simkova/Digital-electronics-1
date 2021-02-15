@@ -1,4 +1,5 @@
-01- Gates
+# 01- Gates
+## Verification of De Morgan's laws of function f(c,b,a).
 | **c** | **b** |**a** | **f(c,b,a)** |
 | :-: | :-: | :-: | :-: |
 | 0 | 0 | 0 |  |
