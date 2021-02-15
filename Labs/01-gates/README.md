@@ -10,3 +10,6 @@
 | 1 | 0 | 1 |  |
 | 1 | 1 | 0 |  |
 | 1 | 1 | 1 |  |
+
+
+[Link to my public EDA Playground example](https://www.edaplayground.com/x/MQcs)
