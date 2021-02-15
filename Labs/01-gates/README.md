@@ -62,6 +62,49 @@ end architecture dataflow;
 
 ## 3. Verification of Distributive laws.
 
+```vhdl
+------------------------------------------------------------------------
+--
+-- Example of basic OR, AND, XOR gates.
+-- Nexys A7-50T, Vivado v2020.1, EDA Playground
+--
+-- Copyright (c) 2019-2020 Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
+library ieee;               -- Standard library
+use ieee.std_logic_1164.all;-- Package for data types and logic operations
+
+------------------------------------------------------------------------
+-- Entity declaration for basic gates
+------------------------------------------------------------------------
+entity gates is
+    port(
+        x_i    : in  std_logic;         -- Data input
+        y_i    : in  std_logic;         -- Data input
+        z_i    : in  std_logic;         -- Data input
+        f1_o   : out std_logic;         
+        f2_o   : out std_logic;         
+        f3_o   : out std_logic;          
+        f4_o   : out std_logic          
+    );
+end entity gates;
+
+------------------------------------------------------------------------
+-- Architecture body for basic gates
+------------------------------------------------------------------------
+architecture dataflow of gates is
+begin
+    f1_o  <= (x_i and y_i) or (x_i and z_i);
+    f2_o  <= x_i and (y_i or z_i);
+    f3_o  <= (x_i or y_i) and (x_i or z_i);
+    f4_o  <= x_i or (y_i and z_i);
+
+end architecture dataflow;
+```
+
 ![graf2](Images/graf2.png)
 
 [Link to my public EDA Playground example](https://www.edaplayground.com/x/B3N7)
