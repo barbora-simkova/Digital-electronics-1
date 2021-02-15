@@ -1,7 +1,7 @@
 # 01 - Gates
 ## 1. Submit the GitHub link to repository
 [repository](https://github.com/barbora-simkova/Digital-electronics-1)
-## 2. Verification of De Morgan's laws of function.
+## 2. Verification of De Morgan's laws of function
 
 ```vhdl 
 ------------------------------------------------------------------------
@@ -60,7 +60,7 @@ end architecture dataflow;
 
 [Link to my public EDA Playground example](https://www.edaplayground.com/x/Z594)
 
-## 3. Verification of Distributive laws.
+## 3. Verification of Distributive laws
 
 ```vhdl
 ------------------------------------------------------------------------
