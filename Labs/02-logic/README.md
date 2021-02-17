@@ -20,9 +20,24 @@
 |         14          |    1 1     |    1 0     |            1            |       0        |          0           |
 |         15          |    1 1     |    1 1     |            0            |       1        |          0           |
 
-
 # 2. A 2-bit comparator
+
 ## Karnaugh maps for all three functions
+
+![k-map](Images/mapy.png)
 
 
 ## Simplified SoP form of the "greater than" function and simplified PoS form of the "less than" function
+
+![funkce](Images/funkce.png)
+
+# 3. A 4-bit binary comparator
+## VHDL architecture
+
+## VHDL stimulus process from testbench file
+
+## Listing of simulator console output, i.e. with one reported error
+
+## Link to your public EDA Playground
+
+[Link to my public EDA Playground example](https://www.edaplayground.com/x/iUxJ)
