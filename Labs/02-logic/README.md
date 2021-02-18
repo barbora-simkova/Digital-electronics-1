@@ -1,5 +1,5 @@
-# 1. Preparation tasks (done before the lab at home)
-## Binary comparator truth table:
+# 1. Preparation tasks
+### Binary comparator truth table:
 
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-----------------: | :--------: | :--------: | :---------------------: | :------------: | :------------------: |
@@ -22,22 +22,26 @@
 
 # 2. A 2-bit comparator
 
-## Karnaugh maps for all three functions
+### Karnaugh maps for all three functions
 
 ![k-map](Images/mapy.png)
 
 
-## Simplified SoP form of the "greater than" function and simplified PoS form of the "less than" function
+### Simplified SoP form of the "greater than" function and simplified PoS form of the "less than" function
 
 ![funkce](Images/funkce.png)
 
+### Link to my public EDA Playground example in the form
+
+https://www.edaplayground.com/x/8Rgt
+
 # 3. A 4-bit binary comparator
-## VHDL architecture
+### VHDL architecture
 
-## VHDL stimulus process from testbench file
+### VHDL stimulus process from testbench file
 
-## Listing of simulator console output, i.e. with one reported error
+### Listing of simulator console output, i.e. with one reported error
 
-## Link to your public EDA Playground
+### Link to your public EDA Playground
 
-[Link to my public EDA Playground example](https://www.edaplayground.com/x/iUxJ)
+https://www.edaplayground.com/x/TDqp
