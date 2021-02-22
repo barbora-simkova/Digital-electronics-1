@@ -1,5 +1,5 @@
 # 1. Preparation tasks
-### Binary comparator truth table:
+### Completed 2-bit comparator truth table:
 
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-----------------: | :--------: | :--------: | :---------------------: | :------------: | :------------------: |
@@ -27,16 +27,16 @@
 ![k-map](Images/mapy.png)
 
 
-### Simplified SoP form of the "greater than" function and simplified PoS form of the "less than" function
+### Equations of simplified SoP form of the "greater than" function and simplified PoS form of the "less than" function
 
 ![funkce](Images/funkce.png)
 
-### Link to my public EDA Playground example in the form
+### Link to my public EDA Playground
 
 https://www.edaplayground.com/x/8Rgt
 
 # 3. A 4-bit binary comparator
-### VHDL architecture
+### Listing of VHDL architecture from design file
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -71,9 +71,7 @@ begin
 end architecture Behavioral;
 ```
 
-
-
-### VHDL stimulus process from testbench file
+### Listing of VHDL stimulus process from testbench file
 
 ```vhdl
 ------------------------------------------------------------------------
