@@ -106,9 +106,11 @@ Here we choose project type to RTL Project.
 
 We can add source file during the creation of the project or after the creation by following these steps:
 
+File -> Add Sources...
+
 ![add](Images/Addsources1.png)
 
-Here we choose Add or create design sources.
+Here we choose Add or create design sources and click on Next.
 
 ![add2](Images/Addsources2.png)
 
@@ -132,7 +134,7 @@ Then we click on Create File, choose VHDL in column File type and fill in the Fi
 
 ### Running simulation
 
-First option - in Flow Navigator
+First option - in Flow Navigator -> Run Simulation -> Run Behavioral Simulation
 
 ![simulation](Images/simulation.png)
 
@@ -146,7 +148,7 @@ File -> Add Sources...
 
 ![XDC](Images/Addsources1.png)
 
-Here we choose the first option - Add or create constrains
+Here we choose Add or create constrains and click on Next.
 
 ![xdc](Images/xdc.png)
 
