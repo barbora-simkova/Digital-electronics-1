@@ -1,5 +1,5 @@
 # 1. Preparation tasks 
-### Figure or table with connection of 16 slide switches and 16 LEDs on Nexys A7 board.
+### Table with connection of 16 slide switches and 16 LEDs on Nexys A7 board.
 
 |   LEDs   | Connection     | Switches | Connection |
 | :--: | :--: | :--: | :--: |
@@ -86,12 +86,19 @@ p_stimulus : process
 # 3. A Vivado tutorial
 ### Project creation
 
+First option - Quick Start -> Create Project
+
 ![1.way](Images/create1.png)
 
-Second option
+Second option - File -> Project -> New...
+
 ![2.way](Images/create2.png)
 
+Here we type name of the project and choose the directory where the project data will be stored.
+
 ![path](Images/create4.png)
+
+Here we choose project type to RTL Project.
 
 ![type](Images/create3.png)
 
@@ -101,18 +108,48 @@ We can add source file during the creation of the project or after the creation 
 
 ![add](Images/Addsources1.png)
 
+Here we choose Add or create design sources.
+
 ![add2](Images/Addsources2.png)
+
+Then we click on Create File, choose VHDL in column File type and fill in the File name.
 
 ![add3](Images/Addsources.png)
 
 ### Adding testbench file
 
+File -> Add Sources...
+
 ![tb](Images/Addsources1.png)
 
+Here we choose Add or create simulation sources and click on Next.
+
 ![add](Images/testbench.png)
+
+Then we click on Create File, choose VHDL in column File type and fill in the File name.
 
 ![tb1](Images/testbench1.png)
 
 ### Running simulation
 
+First option - in Flow Navigator
+
 ![simulation](Images/simulation.png)
+
+Second option - Flow -> Run Simulation -> Run Behavioral Simulation
+
+![simulation1](Images/simulation1.png)
+
+### Adding XDC constraints file
+
+File -> Add Sources...
+
+![XDC](Images/Addsources1.png)
+
+Here we choose the first option - Add or create constrains
+
+![xdc](Images/xdc.png)
+
+Then we click on Create File and choose XDC in column File type and fill in the File name.
+
+![xdc1](Images/xdc1.png)
