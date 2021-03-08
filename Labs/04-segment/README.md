@@ -144,7 +144,7 @@ p_stimulus : process
 
 ### Screenshot with simulated time waveforms; always display all inputs and outputs:
 
-![simulace](Images\graf1.png)
+![simulace](Images/graf1.png)
 
 ### Listing of VHDL code from source file top.vhd with 7-segment module instantiation:
 
@@ -233,6 +233,6 @@ hex2seg : entity work.hex_7seg
 
 ### Screenshot with simulated time waveforms; always display all inputs and outputs:
 
-![simulace2](Images\graf2.png)
+![simulace2](Images/graf2.png)
 
 
