@@ -162,7 +162,7 @@ entity top is
             
             LED: out STD_LOGIC_VECTOR(8 - 1 downto 0);
             AN : out STD_LOGIC_VECTOR(8 - 1 downto 0)
-         );
+            );
 end top;
 
 architecture Behavioral of top is
@@ -179,7 +179,7 @@ hex2seg : entity work.hex_7seg
             seg_o(2) => CE,
             seg_o(1) => CF,
             seg_o(0) => CG
-        );
+            );
 ```
 
 
@@ -213,7 +213,7 @@ hex2seg : entity work.hex_7seg
 **Listing of VHDL code for LEDs(7:4)**
 
 ``` vhdl
--- Turn LED(4) on if input value is equal to 0, ie "0000"
+    -- Turn LED(4) on if input value is equal to 0, ie "0000"
     LED(4) <= '1' when (SW = "0000") else '0';
     
     -- Turn LED(5) on if input value is greater than 9
