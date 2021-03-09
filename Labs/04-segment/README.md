@@ -229,7 +229,7 @@ hex2seg : entity work.hex_7seg
     LED(7) <= '1' when (SW = "0001") else 		--1
               '1' when (SW = "0010") else		--2
               '1' when (SW = "0100") else		--4
-              '1' when (SW = "1000") else '0';	--8
+              '1' when (SW = "1000") else '0';  --8
 ```
 
 ### Screenshot with simulated time waveforms; always display all inputs and outputs:
