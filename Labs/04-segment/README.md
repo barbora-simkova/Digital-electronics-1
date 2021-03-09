@@ -149,26 +149,7 @@ p_stimulus : process
 ### Listing of VHDL code from source file top.vhd with 7-segment module instantiation:
 
 ```vhdl
-entity top is
-    Port ( 
-            SW : in STD_LOGIC_VECTOR (4 - 1 downto 0);
-            CA : out STD_LOGIC;
-            CB : out STD_LOGIC;
-            CC : out STD_LOGIC;
-            CD : out STD_LOGIC;
-            CE : out STD_LOGIC;
-            CF : out STD_LOGIC;
-            CG : out STD_LOGIC;
-            
-            LED: out STD_LOGIC_VECTOR(8 - 1 downto 0);
-            AN : out STD_LOGIC_VECTOR(8 - 1 downto 0)
-            );
-end top;
-
-architecture Behavioral of top is
-
-begin
- -- Instance (copy) of hex_7seg entity
+-- Instance (copy) of hex_7seg entity
 hex2seg : entity work.hex_7seg
         port map(
             hex_i    => SW,
