@@ -223,13 +223,13 @@ hex2seg : entity work.hex_7seg
               '1' when (SW = "1001") else 		--9
               '1' when (SW = "1011") else 		--b
               '1' when (SW = "1101") else 		--d
-              '1' when (SW = "1111") else '0';  --f
+              '1' when (SW = "1111") else '0';      --f
     
     -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
     LED(7) <= '1' when (SW = "0001") else 		--1
               '1' when (SW = "0010") else		--2
               '1' when (SW = "0100") else		--4
-              '1' when (SW = "1000") else '0';  --8
+              '1' when (SW = "1000") else '0';      --8
 ```
 
 ### Screenshot with simulated time waveforms; always display all inputs and outputs:
