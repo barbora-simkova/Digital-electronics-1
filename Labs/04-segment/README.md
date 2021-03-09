@@ -5,7 +5,7 @@
 ### Figure or table with connection of 7-segment displays on Nexys A7 board:
 
 | **Anodes** | Connection | **Cathodes** | **Connection** |
-| ---------- | ---------- | ------------ | -------------- |
+| :-: | :-: | :-: | :-: |
 | AN0 | J17 | CA | T10 |
 | AN1 | J18 | CB | R10 |
 | AN2 | T9 | CC | K16 |
