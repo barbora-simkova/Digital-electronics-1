@@ -23,7 +23,24 @@
 ### Listing of VHDL code of the process `p_cnt_up_down` 
 
 ```vhdl
+p_cnt_up_down : process(clk)
+    begin
+        if rising_edge(clk) then
+        
+            if (reset = '1') then               -- Synchronous reset
+                s_cnt_local <= (others => '0'); -- Clear all bits
 
+            elsif (en_i = '1') then       -- Test if counter is enabled
+
+                -- TEST COUNTER DIRECTION HERE
+                if(cnt_up_i = '1') then
+                     s_cnt_local <= s_cnt_local + 1;
+                else
+                     s_cnt_local <= s_cnt_local -1;
+                end if;
+            end if;
+        end if;
+    end process p_cnt_up_down;
 ```
 
 
@@ -72,7 +89,7 @@
 ```
 
 ### Screenshot with simulated time waveforms; always display all inputs and outputs
-
+![simulace](Images/graf.png)
 # 3. Top level
 ### Listing of VHDL code from source file top.vhd with all instantiations for the 4-bit bidirectional counter
 
@@ -128,5 +145,5 @@
 
 ### Image of the top layer including both counters, ie a 4-bit bidirectional counter from Part 4 and a 16-bit counter with a different time base from Part Experiments on your own. The image can be drawn on a computer or by hand.
 
-
+![simulace](Images/counters.png)
 

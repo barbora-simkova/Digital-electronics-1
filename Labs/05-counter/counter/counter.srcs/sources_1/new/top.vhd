@@ -77,7 +77,7 @@ begin
     -- Instance (copy) of cnt_up_down entity
     bin_cnt0 : entity work.cnt_up_down
         generic map(
-            g_CNT_WIDTH => 4
+            g_CNT_WIDTH => 5
         )
         port map(
             clk       => CLK100MHZ,
