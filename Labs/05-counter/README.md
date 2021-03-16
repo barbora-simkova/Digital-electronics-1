@@ -30,7 +30,7 @@ p_cnt_up_down : process(clk)
             if (reset = '1') then               -- Synchronous reset
                 s_cnt_local <= (others => '0'); -- Clear all bits
 
-            elsif (en_i = '1') then       		-- Test if counter is enabled
+            elsif (en_i = '1') then             -- Test if counter is enabled
 
                 -- TEST COUNTER DIRECTION HERE
                 if(cnt_up_i = '1') then
