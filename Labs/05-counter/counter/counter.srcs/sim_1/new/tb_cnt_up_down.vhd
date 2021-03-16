@@ -91,9 +91,30 @@ begin
         
         -- Change counter direction
         s_cnt_up <= '1';
-        wait for 380 ns;
+        wait for 200 ns;
+         -- Expected output
+        assert (s_cnt = "1100")
+        -- If false, then report an error
+        report "Test failed for input on 200ns" severity error;
+        
+        wait for 30 ns;
+         -- Expected output
+        assert (s_cnt = "1111")
+        -- If false, then report an error
+        report "Test failed for input on 230ns" severity error;
+        
+        wait for 150 ns;
+         -- Expected output
+        assert (s_cnt = "1110")
+        -- If false, then report an error
+        report "Test failed for input on 380ns" severity error;
+        
         s_cnt_up <= '0';
         wait for 220 ns;
+         -- Expected output
+        assert (s_cnt = "1000")
+        -- If false, then report an error
+        report "Test failed for input on 600ns" severity error;
 
         -- Disable counting
         s_en     <= '0';

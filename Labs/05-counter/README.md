@@ -76,9 +76,30 @@ p_cnt_up_down : process(clk)
         
         -- Change counter direction
         s_cnt_up <= '1';
-        wait for 380 ns;
+        wait for 200 ns;
+         -- Expected output
+        assert (s_cnt = "1100")
+        -- If false, then report an error
+        report "Test failed for input on 200ns" severity error;
+        
+        wait for 30 ns;
+         -- Expected output
+        assert (s_cnt = "1111")
+        -- If false, then report an error
+        report "Test failed for input on 230ns" severity error;
+        
+        wait for 150 ns;
+         -- Expected output
+        assert (s_cnt = "1110")
+        -- If false, then report an error
+        report "Test failed for input on 380ns" severity error;
+        
         s_cnt_up <= '0';
         wait for 220 ns;
+         -- Expected output
+        assert (s_cnt = "1000")
+        -- If false, then report an error
+        report "Test failed for input on 600ns" severity error;
 
         -- Disable counting
         s_en     <= '0';
@@ -143,7 +164,7 @@ p_cnt_up_down : process(clk)
 
 
 
-### Image of the top layer including both counters, ie a 4-bit bidirectional counter from Part 4 and a 16-bit counter with a different time base from Part Experiments on your own. The image can be drawn on a computer or by hand.
+### Image of the top layer including both counters, ie a 4-bit bidirectional counter from Part 4 and a 16-bit counter with a 10 ms time base from Part Experiments on your own. 
 
 ![simulace](Images/counters.png)
 
