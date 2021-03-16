@@ -30,7 +30,7 @@ p_cnt_up_down : process(clk)
             if (reset = '1') then               -- Synchronous reset
                 s_cnt_local <= (others => '0'); -- Clear all bits
 
-            elsif (en_i = '1') then       -- Test if counter is enabled
+            elsif (en_i = '1') then       		-- Test if counter is enabled
 
                 -- TEST COUNTER DIRECTION HERE
                 if(cnt_up_i = '1') then
@@ -77,29 +77,29 @@ p_cnt_up_down : process(clk)
         -- Change counter direction
         s_cnt_up <= '1';
         wait for 200 ns;
-         -- Expected output
-        assert (s_cnt = "1100")
-        -- If false, then report an error
-        report "Test failed for input on 200ns" severity error;
+        	-- Expected output
+        	assert (s_cnt = "1100")
+        	-- If false, then report an error
+       		report "Test failed for input on 200ns" severity error;
         
         wait for 30 ns;
-         -- Expected output
-        assert (s_cnt = "1111")
-        -- If false, then report an error
-        report "Test failed for input on 230ns" severity error;
+        	-- Expected output
+        	assert (s_cnt = "1111")
+        	-- If false, then report an error
+        	report "Test failed for input on 230ns" severity error;
         
         wait for 150 ns;
-         -- Expected output
-        assert (s_cnt = "1110")
-        -- If false, then report an error
-        report "Test failed for input on 380ns" severity error;
+        	-- Expected output
+        	assert (s_cnt = "1110")
+        	-- If false, then report an error
+       		report "Test failed for input on 380ns" severity error;
         
         s_cnt_up <= '0';
         wait for 220 ns;
-         -- Expected output
-        assert (s_cnt = "1000")
-        -- If false, then report an error
-        report "Test failed for input on 600ns" severity error;
+         	-- Expected output
+        	assert (s_cnt = "1000")
+       		-- If false, then report an error
+        	report "Test failed for input on 600ns" severity error;
 
         -- Disable counting
         s_en     <= '0';
