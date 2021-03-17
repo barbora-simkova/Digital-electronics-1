@@ -1,49 +1,36 @@
-## 1. Preparation tasks
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 17.03.2021 14:01:19
+-- Design Name: 
+-- Module Name: top - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
-See schematic or reference manual of the Nexys board, find out the connection of 7-segment displays, and complete the signal timing to display four-digit value `3.142`.
 
-![preapration](Images/wavedrom.png)
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-## 2. Display driver
-### Listing of VHDL code of the process `p_mux` with syntax highlighting.
-```vhdl
-    --------------------------------------------------------------------
-    -- p_mux:
-    -- A combinational process that implements a multiplexer for
-    -- selecting data for a single digit, a decimal point signal, and 
-    -- switches the common anodes of each display.
-    --------------------------------------------------------------------
-    p_mux : process(s_cnt, data0_i, data1_i, data2_i, data3_i, dp_i)
-    begin
-        case s_cnt is
-            when "11" =>
-                s_hex <= data3_i;
-                dp_o  <= dp_i(3);
-                dig_o <= "0111";
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
 
-            when "10" =>
-                s_hex <= data2_i;
-                dp_o  <= dp_i(2);
-                dig_o <= "1011";
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
-            when "01" =>
-                s_hex <= data1_i;
-                dp_o  <= dp_i(1);
-                dig_o <= "1101";
-
-            when others =>
-                s_hex <= data0_i;
-                dp_o  <= dp_i(0);
-                dig_o <= "1110";
-        end case;
-```
-### Listing of VHDL testbench file `tb_driver_7seg_4digits` with syntax highlighting and asserts
-
-### Screenshot with simulated time waveforms; always display all inputs and outputs
-
-### Listing of VHDL architecture of the top layer.
-
-```vhdl
 entity top is
     Port
     (
@@ -112,7 +99,3 @@ begin
     AN(7 downto 4) <= b"1111";
 
 end architecture Behavioral;
-
-```
-
-## 3. Eight-digit driver
