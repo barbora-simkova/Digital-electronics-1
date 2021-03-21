@@ -132,7 +132,7 @@ begin
         s_dp_i    <= "0111"; 
         
         wait for 600 ns;
-            -- Expected output
+        -- Expected output
         	assert ((s_seg_o = "0000110") and (s_dig_o = "0111"))
         	-- If false, then report an error
         	report "Test failed for input on 600ns" severity error;
@@ -143,7 +143,7 @@ begin
         s_data0_i <= "0001";
         
         wait for 150 ns;
-            -- Expected output
+        -- Expected output
         	assert ((s_seg_o = "1001111") and (s_dig_o = "1110"))
         	-- If false, then report an error
         	report "Test failed for input on 750ns" severity error;
