@@ -66,12 +66,9 @@ architecture testbench of tb_driver_7seg_4digits is
     signal s_data2_i      : std_logic_vector(4 - 1 downto 0);
     signal s_data3_i      : std_logic_vector(4 - 1 downto 0); 
     signal s_dp_i         : std_logic_vector(4 - 1 downto 0);   
-
-    signal s_dp_o         : std_logic;   
-    
+    signal s_dp_o         : std_logic; 
     signal s_seg_o        : std_logic_vector(7 - 1 downto 0);  
-
-    signal s_dig_o        :std_logic_vector(4 - 1 downto 0);
+    signal s_dig_o        : std_logic_vector(4 - 1 downto 0);
 
 begin
     -- Connecting testbench signals with driver_7seg_4digits entity
