@@ -29,7 +29,6 @@ architecture testbench of tb_driver_7seg_4digits is
 
     --Local signals
     signal s_clk_100MHz   : std_logic;
-    signal s_clk          : std_logic;   
     signal s_reset        : std_logic;
     signal s_data0_i      : std_logic_vector(4 - 1 downto 0);
     signal s_data1_i      : std_logic_vector(4 - 1 downto 0);
@@ -107,11 +106,21 @@ begin
         s_dp_i    <= "0111"; 
         
         wait for 600 ns;
+            -- Expected output
+        	assert (s_seg_o = "0000110")
+        	-- If false, then report an error
+        	report "Test failed for input on 600ns" severity error;
         
         s_data3_i <= "0000";
         s_data2_i <= "0001";   
         s_data1_i <= "0000";
         s_data0_i <= "0001";
+        
+        wait for 150 ns;
+            -- Expected output
+        	assert (s_seg_o = "0000110")
+        	-- If false, then report an error
+        	report "Test failed for input on 600ns" severity error;
 
         report "Stimulus process finished" severity note;
         wait;
