@@ -2,10 +2,10 @@
 D flip-flop
 | **D** | **Qn** | **Q(n+1)** | **Comments** |
 | :-: | :-: | :-: | :-- |
-| 0 | 0 |  |  |
-| 0 | 1 |  |  |
-| 1 |  |  |  |
-| 1 |  |  |  |
+| 0 | 0 | 0 | No change |
+| 0 | 1 | 0 | Reset |
+| 1 | 0 | 1 | No change |
+| 1 | 1 | 1 | Set |
 
 JK flip-flop
 | **J** | **K** | **Qn** | **Q(n+1)** | **Comments** |
