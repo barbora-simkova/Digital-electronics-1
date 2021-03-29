@@ -32,26 +32,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity tb_d_ff_arst is
-    Port (
-        signal s_clk_100MHz   :  STD_LOGIC;
-        signal s_en           :  STD_LOGIC;
-        signal s_arst         :  STD_LOGIC;
-        signal s_d            :  STD_LOGIC;
-        signal s_q            :  STD_LOGIC;
-        signal s_q_bar        :  STD_LOGIC
-         );
+--  Port ( );
 end tb_d_ff_arst;
 
 architecture Behavioral of tb_d_ff_arst is
-        clk   => s_clk_100MHz,
-        en    => s_en,
-        arst  => s_arst,
-        d     => s_d,
-        q     => s_q,
-        q_bar => s_q_bar
+
+    constant c_CLK_100MHZ_PERIOD : time  := 10 ns;
+    
+    signal s_clk_100MHz    :std_logic;
+    signal s_arst          :std_logic;
+    signal s_d             :std_logic;
+    signal s_q             :std_logic;
+    signal s_q_bar         :std_logic;
 begin
 
---------------------------------------------------------------------
+    uut_d_ff_arst : entity work.d_ff_arst
+    port map (
+        clk    => s_clk_100MHz,
+        arst   => s_arst,
+        d      => s_d,
+        q      => s_q,
+        q_bar  => s_q_bar
+    );
+
+    --------------------------------------------------------------------
     -- Clock generation process
     --------------------------------------------------------------------
     p_clk_gen : process
@@ -64,47 +68,106 @@ begin
         end loop;
         wait;
     end process p_clk_gen;
-
- --------------------------------------------------------------------
+    
+    --------------------------------------------------------------------
     -- Reset generation process
     --------------------------------------------------------------------
-     p_reset_gen : process
+    --- WRITE YOUR CODE HERE
+    p_reset_gen : process
     begin
         s_arst <= '0';
-        wait for 53 ns;
+        wait for 58 ns;
         
-        -- Reset activated
         s_arst <= '1';
         wait for 15 ns;
 
         s_arst <= '0';
+        wait for 58 ns;
+        
+        s_arst <= '1';
+
         wait;
     end process p_reset_gen;
-    
- p_stimulus : process
+
+
+    p_stimulus : process
     begin
         report "Stimulus process started" severity note;
         
         --d sequence
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
         --/d sequence
         
+        wait for 5 ns;
+        assert(s_q = '0' and s_q_bar = '1')
+        report "Test failed for input on 75ns" severity error;
+        
+         --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
+        wait for 5 ns;
+        assert(s_q = '1' and s_q_bar = '0')
+        report "Test failed for input on 150ns" severity error;
+               
+         --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
+         --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+               
         report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;
-
-
 
 end Behavioral;

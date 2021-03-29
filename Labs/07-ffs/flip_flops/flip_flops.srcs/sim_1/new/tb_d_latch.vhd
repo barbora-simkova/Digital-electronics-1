@@ -41,8 +41,8 @@ architecture Behavioral of tb_d_latch is
         signal s_arst  :  STD_LOGIC;
         signal s_d     :  STD_LOGIC;
         signal s_q     :  STD_LOGIC;
-        signal s_q_bar :  STD_LOGIC
-
+        signal s_q_bar :  STD_LOGIC;
+        
 begin
 
     uut_d_latch : entity work.d_latch
@@ -61,9 +61,14 @@ begin
         
         -- Reset activated
         s_arst <= '1';
-        wait for 53 ns;
+        wait for 5 ns;
 
+        -- Reset deactivated
         s_arst <= '0';
+        
+        wait for 108 ns;
+        s_arst <= '1';
+        
         wait;
     end process p_reset_gen;
     
@@ -73,23 +78,104 @@ begin
         s_en <= '0';
         s_d  <= '0';
         
-        --d sequence
+         --d sequence
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
-        s_d <= '1';
+        s_d  <= '1';
         wait for 10 ns;
-        s_d <= '0';
+        s_d  <= '0';
         wait for 10 ns;
         --/d sequence
         
         s_en <= '1';
+        
+        wait for 3 ns;
+        assert(s_q = '0' and s_q_bar = '1')
+        report "Test failed for input on 73ns" severity error;
+        
+        --d sequence
+        wait for 7 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_en <= '0';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
+        wait for 10 ns;
+        assert(s_q = '1' and s_q_bar = '0')
+        report "Test failed for input on 160ns" severity error;
+        
+        --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
+        s_en <= '1';
+        
+        wait for 10 ns;
+        assert(s_q = '0' and s_q_bar = '1')
+        report "Test failed for input on 240ns" severity error;
+        
+        --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
+        --d sequence
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        s_d  <= '1';
+        wait for 10 ns;
+        s_d  <= '0';
+        wait for 10 ns;
+        --/d sequence
+        
         report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;
