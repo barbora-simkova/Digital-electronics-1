@@ -758,4 +758,4 @@ p_t_ff_rst : process (clk)
 
 ### Image of the shift register schematic. The image can be drawn on a computer or by hand. Name all inputs, outputs, components and internal signals
 
-![shift_register](Images/shift_register.png)
+![shift_register](Images/Shift_register.png)
