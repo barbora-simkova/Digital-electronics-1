@@ -15,15 +15,15 @@
 | LD17 | N16, R11, G14 | `1,0,0` | `1,1,0` | `0,1,0` |
 
 ## 2. Traffic light controller
-**Listing of VHDL code of sequential process `p_traffic_fsm` with syntax highlighting, **
+**Listing of VHDL code of sequential process `p_traffic_fsm` with syntax highlighting**
 
-**Listing of VHDL code of combinatorial process `p_output_fsm` with syntax highlighting,**
+**Listing of VHDL code of combinatorial process `p_output_fsm` with syntax highlighting**
 
-**Screenshot(s) of the simulation, from which it is clear that controller works correctly.**
+**Screenshot(s) of the simulation, from which it is clear that controller works correctly**
 
 ## 3. Smart controller
 **State table**
 
 **State diagram**
 
-**Listing of VHDL code of sequential process `p_smart_traffic_fsm` with syntax highlighting.**
+**Listing of VHDL code of sequential process `p_smart_traffic_fsm` with syntax highlighting**
