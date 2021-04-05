@@ -9,6 +9,8 @@
 
 **Figure with connection of RGB LEDs on Nexys A7 board and completed table with color settings**
 
+![figure](Images/figure.png)
+
 | **RGB LED** | **Artix-7 pin names** | **Red** | **Yellow** | **Green** |
 | :-: | :-: | :-: | :-: | :-: |
 | LD16 | N15, M16, R12 | `1,0,0` | `1,1,0` | `0,1,0` |
@@ -18,7 +20,7 @@
 
 **State diagram**
 
-
+![statediagram](Images/statediagram.png)
 
 **Listing of VHDL code of sequential process `p_traffic_fsm` with syntax highlighting**
 
@@ -150,11 +152,144 @@ p_output_fsm : process(s_state)
 
 **Screenshot(s) of the simulation, from which it is clear that controller works correctly**
 
-![](Images/simulace.png)
+![simulace](Images/simulace.png)
 
 ## 3. Smart controller
 **State table**
 
+| Current state | Direction South | Direction West | Delay | No Cars (`00`) | Cars to West (`01`) | Cars to South (`10`) | Cars Both Directions (`11`) |
+| :-----------: | :-------------: | :------------: | ----- | :------------: | :-----------------: | :------------------: | :-------------------------: |
+|    `STOP1`    |       red       |      red       | 1 sec |   `WEST_GO`    |      `WEST_GO`      |      `SOUTH_GO`      |          `WEST_GO`          |
+|   `WEST_GO`   |       red       |     green      | 4 sec |   `WEST_GO`    |      `WEST_GO`      |     `WEST_WAIT`      |         `WEST_WAIT`         |
+|  `WEST_WAIT`  |       red       |     yellow     | 2 sec |    `STOP2`     |       `STOP2`       |       `STOP2`        |           `STOP2`           |
+|    `STOP2`    |       red       |      red       | 1 sec |   `SOUTH_GO`   |      `WEST_GO`      |      `SOUTH_GO`      |         `SOUTH_GO`          |
+|  `SOUTH_GO`   |      green      |      red       | 4 sec |   `SOUTH_GO`   |    `SOUTH_WAIT`     |      `SOUTH_GO`      |        `SOUTH_WAIT`         |
+| `SOUTH_WAIT`  |     yellow      |      red       | 2 sec |    `STOP1`     |       `STOP1`       |       `STOP1`        |           `STOP1`           |
+
 **State diagram**
 
+![smarttraffic](Images/smarttraffic.png)
+
 **Listing of VHDL code of sequential process `p_smart_traffic_fsm` with syntax highlighting**
+
+```vhdl
+   p_smart_traffic_fsm : process(clk)
+    begin
+        if rising_edge(clk) then
+            if (reset = '1') then       -- Synchronous reset
+                s_state <= STOP1 ;      -- Set initial state
+                s_cnt   <= c_ZERO;      -- Clear all bits
+
+            elsif (s_en = '1') then
+                -- Every 250 ms, CASE checks the value of the s_state 
+                -- variable and changes to the next state according 
+                -- to the delay value.
+                case s_state is
+
+                    -- If the current state is STOP1, then wait 1 sec
+                    -- and move to the next GO_WAIT state.
+                    when STOP1 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                           if (sensor = "10") then
+                                -- Skip to the SOUTH_GO state
+                                s_state <= SOUTH_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            else
+                                -- Move to the next state
+                                s_state <= WEST_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            end if;
+                        end if;
+                        
+                    when WEST_GO =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                             if (sensor = "00" or sensor = "01") then
+                                -- Stay on the same state
+                                s_state <= WEST_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            else
+                                -- Move to the next state
+                                s_state <= WEST_WAIT;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            end if;
+                        end if;
+                    
+                    when WEST_WAIT =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP2;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                        
+                    when STOP2 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            if (sensor = "01") then
+                                -- Skip to WEST_GO state
+                                s_state <= WEST_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            else
+                                -- Move to the next state
+                                s_state <= SOUTH_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            end if;
+                        end if;
+                        
+                    when SOUTH_GO =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            if (sensor = "00" or sensor = "10") then
+                                -- Stay on the same state
+                                s_state <= SOUTH_GO;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            else
+                                -- Move to the next state
+                                s_state <= SOUTH_WAIT;
+                                -- Reset local counter value
+                                s_cnt   <= c_ZERO;
+                            end if;
+                        end if;  
+                        
+                    when SOUTH_WAIT =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP1;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    -- It is a good programming practice to use the 
+                    -- OTHERS clause, even if all CASE choices have 
+                    -- been made. 
+                    when others =>
+                        s_state <= STOP1;
+
+                end case;
+            end if; -- Synchronous reset
+        end if; -- Rising edge
+    end process p_smart_traffic_fsm;
+```
+
